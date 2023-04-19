@@ -1,10 +1,11 @@
 const Joi = require("Joi");
 const { Schema } = require("mongoose");
 
-const contactSchema = new Schema({
-  name: {
+const contactSchema = new Schema(
+  {
+    name: {
       type: String,
-      required: [true, 'Set name for contact'],
+      required: [true, "Set name for contact"],
     },
     email: {
       type: String,
@@ -15,8 +16,10 @@ const contactSchema = new Schema({
     favorite: {
       type: Boolean,
       default: false,
-    }, 
-}, {versionKey: false, timestamps: true})
+    },
+  },
+  { versionKey: false, timestamps: true }
+);
 
 const addSchema = Joi.object({
   name: Joi.string().required(),
@@ -27,10 +30,10 @@ const addSchema = Joi.object({
 
 const updateFavoriteSchema = Joi.object({
   favorite: Joi.boolean().required(),
-})
+});
 
 module.exports = {
   addSchema,
-  contactSchema,
   updateFavoriteSchema,
-}
+  contactSchema,
+};
