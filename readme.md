@@ -13,4 +13,4 @@ The project was created as part of the Full stack developer (GOIT) courses. <br>
 -/contacts/:id/favorite" - PATCH - add contact to favorites<br>
 -/contacts/:id - DELETE contact<br>
 <b>Project theme:</b> REST API, MongoDB and Mongoose<br>
-<b>Technologies used:</b> CSS3, Saas, HTML5
+<b>Technologies used:</b> JS, Node.js, exspress.js, MongoDB, Postman
