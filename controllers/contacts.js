@@ -4,7 +4,14 @@ const { HttpError } = require("../helpers");
 const { ctrlWrapper } = require("../helpers");
 
 const getAll = async (req, res) => {
-  const result = await Contact.find({});
+  const { _id: owner } = req.user;
+  const { page = 1, limit = 20, favorite = true } = req.query;
+  const skip = (page - 1) * limit;
+  const result = await Contact.find({ owner }, "-createdAt -updatedAt", {
+    skip,
+    limit,
+    favorite,
+  });
   res.json(result);
 };
 
@@ -19,8 +26,9 @@ const getById = async (req, res) => {
 };
 
 const add = async (req, res) => {
+  const { _id: owner } = req.user;
   const newContact = req.body;
-  const result = await Contact.create(newContact);
+  const result = await Contact.create({ ...newContact, owner });
   res.status(201).json(result);
 };
 
