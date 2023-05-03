@@ -1,4 +1,5 @@
 const multer = require("multer");
+const { platform } = require("os");
 const path = require("path");
 
 const temDir = path.join(__dirname, "../", "temp");
@@ -13,3 +14,5 @@ const multerConfig = multer.diskStorage({
 const upload = multer({
   storage: multerConfig,
 });
+
+module.exports = upload;
